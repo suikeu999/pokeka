@@ -95,7 +95,7 @@ function calculate(matches) {
   return { total: matches.length, wins, losses, draws, rate: decided ? Math.round((wins / decided) * 1000) / 10 : null };
 }
 
-function emptyState(title, message, actionText = "大会を記録する") {
+function emptyState(title, message, actionText = "記録する") {
   return `<div class="empty card"><div class="empty-symbol">◌</div><h2>${escapeHtml(title)}</h2><p>${escapeHtml(message)}</p><button class="button button-primary" data-action="new-tournament">${escapeHtml(actionText)}</button></div>`;
 }
 
@@ -143,7 +143,7 @@ function renderHome({ tournaments }) {
   app.innerHTML = `
     <section class="page-heading">
       <div><h1>戦績のダッシュボード</h1><p>大会結果を記録して、次の一戦に活かしましょう。</p></div>
-      <button class="button button-primary" data-action="new-tournament">＋ 大会を記録</button>
+      <button class="button button-primary" data-action="new-tournament">記録</button>
     </section>
     <section class="stats-grid" aria-label="成績の概要">
       <article class="card stat-card"><span class="stat-label">総対戦数</span><strong class="stat-value">${stats.total}</strong><span class="stat-sub">記録済み対戦</span></article>
@@ -169,7 +169,7 @@ function tournamentRow(tournament) {
 }
 
 function renderTournaments({ tournaments }) {
-  app.innerHTML = `<section class="page-heading"><div><h1>大会記録</h1><p>大会ごとの結果と振り返りを管理します。</p></div><button class="button button-primary" data-action="new-tournament">＋ 大会を記録</button></section>
+  app.innerHTML = `<section class="page-heading"><div><h1>大会記録</h1><p>大会ごとの結果と振り返りを管理します。</p></div><button class="button button-primary" data-action="new-tournament">記録</button></section>
     ${tournaments.length ? `<div class="toolbar"><input id="event-search" type="search" placeholder="大会名・デッキ名で検索" aria-label="大会を検索"></div><div class="tournament-list" id="tournament-list">${tournaments.map(tournamentCard).join("")}</div>` : emptyState("大会記録はまだありません", "右上のボタンから、最初の大会と対戦結果を追加できます。")}`;
   document.querySelector("#event-search")?.addEventListener("input", (event) => {
     const needle = event.target.value.trim().toLowerCase();
