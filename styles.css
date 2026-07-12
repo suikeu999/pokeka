@@ -99,7 +99,7 @@ input:focus, select:focus, textarea:focus { border-color: var(--red); box-shadow
 .match-card { position: relative; padding: 16px; margin-top: 11px; border: 1px solid var(--line); border-radius: 12px; background: #fcfcfd; }
 .match-card.has-error { border-color: #ef4444; box-shadow: 0 0 0 3px rgba(239, 68, 68, .12); }
 .match-title { font-weight: 800; margin: 0 0 13px; }
-.match-grid { display: grid; grid-template-columns: 70px 1.25fr .8fr .8fr; gap: 10px; }
+.match-grid { display: grid; grid-template-columns: 1.25fr .8fr .8fr; gap: 10px; }
 .match-grid .notes { grid-column: 1 / -1; }
 .remove-match { position: absolute; top: 10px; right: 10px; }
 .analysis-grid { grid-template-columns: 1fr 1fr; }
