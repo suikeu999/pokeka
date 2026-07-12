@@ -3,6 +3,7 @@ const DB_VERSION = 2;
 const app = document.querySelector("#app");
 const nav = document.querySelector(".bottom-nav");
 const newTournamentButton = document.querySelector("#new-tournament");
+const saveTournamentButton = document.querySelector("#save-tournament");
 
 const db = {
   instance: null,
@@ -121,9 +122,14 @@ function updateNav(route) {
   nav.querySelectorAll("a").forEach((link) => link.classList.toggle("active", link.dataset.nav === mainRoute));
 }
 
+function updateHeaderActions(route) {
+  saveTournamentButton.hidden = !route.startsWith("tournament/");
+}
+
 async function render() {
   const route = (location.hash.slice(1) || "home").split("?")[0];
   updateNav(route);
+  updateHeaderActions(route);
   const data = await dataSet();
   if (route === "home") renderHome(data);
   else if (route === "tournaments") renderTournaments(data);
@@ -350,6 +356,7 @@ async function requestPersistence() {
 function bindCommonActions() { document.querySelectorAll('[data-action="new-tournament"]').forEach((button) => button.addEventListener("click", () => { location.hash = "tournament/new"; })); }
 
 newTournamentButton.addEventListener("click", () => { location.hash = "tournament/new"; });
+saveTournamentButton.addEventListener("click", () => document.querySelector("#tournament-form")?.requestSubmit());
 window.addEventListener("hashchange", render);
 
 async function initialize() {
