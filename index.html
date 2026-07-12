@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#e53935" />
+    <meta name="description" content="ポケモンカードゲームの大会結果を記録・分析するローカル保存アプリ" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="stylesheet" href="./styles.css" />
+    <title>ポケカ戦績ノート</title>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="app-header">
+        <a class="brand" href="#home" aria-label="ポケカ戦績ノート ホーム">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>ポケカ戦績ノート</span>
+        </a>
+        <button id="new-tournament" class="button button-primary header-action">＋ 大会を記録</button>
+      </header>
+
+      <main id="app" class="content" tabindex="-1"></main>
+
+      <nav class="bottom-nav" aria-label="メインメニュー">
+        <a href="#home" data-nav="home"><span>⌂</span>ホーム</a>
+        <a href="#tournaments" data-nav="tournaments"><span>▤</span>大会</a>
+        <a href="#analysis" data-nav="analysis"><span>◔</span>分析</a>
+        <a href="#settings" data-nav="settings"><span>⚙</span>設定</a>
+      </nav>
+    </div>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
